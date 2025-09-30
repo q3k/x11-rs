@@ -31,12 +31,15 @@ fn main() {
         ("xxf86vm", "1.1", "xf86vmode"),
     ];
 
+    let statik = env::var_os("CARGO_FEATURE_STATIC").is_some();
+
     for &(dep, version, feature) in deps.iter() {
         let var = format!("CARGO_FEATURE_{}", feature.to_uppercase().replace('-', "_"));
         if env::var_os(var).is_none() {
             continue;
         }
         pkg_config::Config::new()
+            .statik(statik)
             .atleast_version(version)
             .probe(dep)
             .unwrap();

@@ -54,6 +54,9 @@ xtest = ["xtst"]
 xtst = []
 dox = []
 
+# Enable static linking of X11 dependencies.
+static = []
+
 [dependencies]
 libc = "0.2"
 
