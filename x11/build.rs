@@ -10,6 +10,9 @@ fn main() {
     if cfg!(feature = "dox") {
         return;
     }
+    if env::var_os("CARGO_FEATURE_SKIP_BUILDRS").is_some() {
+        return
+    }
 
     let deps = [
         ("gl", "1", "glx"),

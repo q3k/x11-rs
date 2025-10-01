@@ -57,6 +57,10 @@ dox = []
 # Enable static linking of X11 dependencies.
 static = []
 
+# Disable linking of X11 libraries. Useful to skip build errors in situations
+# where this library might be pulled in, but not actually used.
+skip-buildrs = []
+
 [dependencies]
 libc = "0.2"
 
